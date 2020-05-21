@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/bird/bird (2).png" type="Texture" id=1]
 [ext_resource path="res://assets/bird/bird (1).png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/Player.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Control_menu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/bird/bird_splat (1).png" type="Texture" id=6]
+[ext_resource path="res://assets/sound/get_coin.wav" type="AudioStream" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -37,7 +38,6 @@ __meta__ = {
 position = Vector2( 2.27833, -0.427189 )
 frames = SubResource( 1 )
 animation = "fly"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -50,9 +50,15 @@ scale = Vector2( 0.967872, 0.832935 )
 
 [node name="Timer" type="Timer" parent="."]
 pause_mode = 2
-wait_time = 4.0
+wait_time = 2.0
 one_shot = true
 
 [node name="Control_menu" parent="." instance=ExtResource( 5 )]
+
+[node name="sfx_score" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="sfx_flap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

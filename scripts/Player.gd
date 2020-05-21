@@ -29,6 +29,7 @@ func _physics_process(delta):
 		velocity.x = 0
 	
 	if Input.is_action_just_pressed("ui_up"):
+		$sfx_flap.play()
 		velocity.y = -jump
 	
 	velocity.y += gravity
@@ -54,3 +55,7 @@ func _on_Timer_timeout():
 # warning-ignore:return_value_discarded
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+
+func get_score():
+	$sfx_score.play()
