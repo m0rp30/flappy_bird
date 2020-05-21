@@ -9,6 +9,7 @@ func _ready():
 	pass
 
 
+# warning-ignore:unused_argument
 func _process(delta):
 	count_coin.text = str(Globals.pipes_count)
 	speed.text = str(Globals.pipes_speed)

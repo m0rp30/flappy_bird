@@ -1,7 +1,5 @@
 extends Node2D
 
-signal update_pipes_count()
-
 var speed = Globals.pipes_speed
 
 
@@ -23,7 +21,9 @@ func _on_Pipe_down_body_entered(body):
 
 func check_body(var body):
 	if body.is_in_group("Player"):
-		get_tree().reload_current_scene()
+		Globals.pipes_speed = 0
+		body.dead()
+		#get_tree().reload_current_scene()
 
 
 func _on_VisibilityNotifier2D_screen_exited():

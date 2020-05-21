@@ -1,29 +1,31 @@
 extends Control
 
-onready var resume = $ColorRect/CenterContainer/VBoxContainer/TBtn_resume
-onready var exit = $ColorRect/CenterContainer/VBoxContainer/TBtn_exit
+onready var resume = $CenterContainer/VBoxContainer/TBtn_resume
+onready var exit = $CenterContainer/VBoxContainer/TBtn_exit
 
 
 func _ready():
 	resume.grab_focus()
 
 
-func _physics_process(delta):
-	if resume.is_hovered() == true:
+# warning-ignore:unused_argument
+func _process(delta):
+	if resume.is_hovered():
 		resume.grab_focus()
-	if exit.is_hovered() == true:
+	if exit.is_hovered():
 		exit.grab_focus()
 
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
+		print("ui_cancel")
 		resume.grab_focus()
 		set_paused()
 
 
 func set_paused():
-	get_tree().paused = not get_tree().paused
-	visible = not visible
+	get_tree().paused = !get_tree().paused
+	visible = !visible
 
 
 func _on_TBtn_resume_pressed():

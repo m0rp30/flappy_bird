@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/bird/bird (2).png" type="Texture" id=1]
 [ext_resource path="res://assets/bird/bird (1).png" type="Texture" id=2]
 [ext_resource path="res://assets/bird/bird (0).png" type="Texture" id=3]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Control_menu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/bird/bird_splat (1).png" type="Texture" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -11,6 +13,11 @@ animations = [ {
 "loop": true,
 "name": "fly",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "splat",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -20,6 +27,7 @@ height = 6.49033
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
+z_index = 1
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
@@ -29,7 +37,7 @@ __meta__ = {
 position = Vector2( 2.27833, -0.427189 )
 frames = SubResource( 1 )
 animation = "fly"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -39,4 +47,12 @@ shape = SubResource( 2 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 0.963839, -0.25702 )
 scale = Vector2( 0.967872, 0.832935 )
+
+[node name="Timer" type="Timer" parent="."]
+pause_mode = 2
+wait_time = 4.0
+one_shot = true
+
+[node name="Control_menu" parent="." instance=ExtResource( 5 )]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
