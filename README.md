@@ -3,8 +3,8 @@ Clone del gioco flappy bird creaco con l'engine Godot versione 3.2.3 per piattaf
 
 ## Struttura
 
-  - [Menu principale](#menu_principale)
-  - [Schermata per la classifica](#classifica)
+  - [Menu principale](#menu-principale)
+  - [Menu classifica](#menu-classifica)
   - [Livelli](#livelli)
 
 ### Menu principale
@@ -20,5 +20,5 @@ Visualizza i punteggi raggiunti da ogni giocatore, il database nel caso del mobi
 Si aumenterà di livello al pari di difficoltà e di tempo di gioco
 
 ## Table of content
-  - [Flappy bird](#flappy bird)
+  - [Flappy bird](#flappy-bird)
    - [Struttura](#struttura)
